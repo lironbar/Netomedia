@@ -29,21 +29,27 @@ component('pageList', {
     // Add user function that opens a form in popup message.
     $scope.addUser = function() {
       ngDialog.open({
-          template: 'app/layout/pop-up/pop-up.html',
-          controller: ['$scope', 'NewUserService', function($scope, NewUserService) {
-            // Submit form and fire getNewUser function.
-            $scope.submitUserForm = function(user) {
-              NewUserService.getNewUser(user);
-            }
-          }]
+        template: 'app/layout/pop-up/pop-up.html',
+        controller: ['$scope', 'NewUserService', function($scope, NewUserService) {
+          // Submit form and fire getNewUser function.
+          $scope.submitUserForm = function(user) {
+            NewUserService.getNewUser(user);
+          }
+        }]
       });
     }
     // Add new user to $scope.users from form data.
+    var newUserId;
     $scope.$on('addUserEvent', function(event, data) {
       if (data) {
-        newUserData = data.sendData;
-        var lastUser = $scope.users[$scope.users.length - 1];
-        var newUserId = lastUser.id + 1;
+        if($scope.users.length > 0) {
+          newUserData = data.sendData;
+          var lastUser = $scope.users[$scope.users.length - 1];
+          newUserId = lastUser.id + 1;
+        }
+        else {
+          newUserId = 1;
+        }
         newUserData.id = newUserId;
         newUserData.status = "online";
         $scope.users.push(newUserData);
