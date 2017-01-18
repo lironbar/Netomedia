@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Netomedia Project</title>
+  <link rel="stylesheet" href="app/styles/app.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.min.css">
+  <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.min.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/ng-dialog/js/ngDialog.min.js"></script>
+  <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
+
+  <script src="app/app.js"></script>
+  <script src="app/app.config.js"></script>
+  <script src="app/layout/user-list/user-list.js"></script>
+  <script src="app/services/newUser.service.js"></script>
+  <script src="app/services/getUsers.factory.js"></script>
+  <script src="app/filters/capitalize.filter.js"></script>
+</head>
+<body ng-app="app">
+
+  <div ng-view></div>
+
+</body>
+</html>

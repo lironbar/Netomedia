@@ -1,0 +1,58 @@
+<header class="header-container text-center">
+  <span id="titleSm"> Netomedia Exam </span>
+  <h1 id="titleLg"> User Project </h1>
+
+  <div class="row marginTop">
+    <div class="center">
+      <div class="form-group col-sm-offset-3 col-sm-3 col-xs-6">
+        <label>Search For A User:</label>
+        <input placeholder="Search..." ng-model="query" class="form-control" />
+      </div>
+      <div class="form-group col-sm-3 col-xs-6">
+        <label>Sort by:</label>
+        <select ng-model="orderProp" class="form-control">
+          <option value="id">Row Number</option>
+          <option value="firstName">First Name</option>
+          <option value="age">Age</option>
+          <option value="status">Status</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <button type="button" class="btn btn-primary btn-lg" ng-click="addUser()">Add User</button>
+    </div>
+  </div>
+</header>
+
+
+<div class="container">
+  <dir-pagination-controls></dir-pagination-controls>
+  <div class="marginTop table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Age</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr dir-paginate="user in users | itemsPerPage: 10 | filter: query | orderBy: orderProp track by user.id">
+          <td>{{$index + 1}}</td>
+          <td>{{user.firstName | capitalize}}</td>
+          <td>{{user.lastName | capitalize}}</td>
+          <td>{{user.email | capitalize}}</td>
+          <td>{{user.age}}</td>
+          <td ng-class="user.status == 'online' ? 'text-success' : 'text-danger'">{{user.status | capitalize}}</td>
+          <td ng-click="removeUser(user.id)"><a id="removeBtn">Remove</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
