@@ -42,8 +42,8 @@ component('pageList', {
     var newUserId;
     $scope.$on('addUserEvent', function(event, data) {
       if (data) {
+        newUserData = data.sendData;
         if($scope.users.length > 0) {
-          newUserData = data.sendData;
           var lastUser = $scope.users[$scope.users.length - 1];
           newUserId = lastUser.id + 1;
         }
